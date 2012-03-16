@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE yml_catalog SYSTEM "shops.dtd">
+<yml_catalog date="2011-06-29 14:48">
+  <shop>
+    <name>Unikicks</name>
+    <company>Юникикс</company>
+    <url>http://unikicks.ru/</url>
+    <currencies>
+      <currency rate="1" id="RUR"/>
+      <currency plus="3" rate="CBRF" id="USD"/>
+      <currency plus="0.2" rate="CBRF" id="EUR"/>
+    </currencies>
+    <categories>
+      <category id="2">Heelys</category>
+      <category parentId="2" id="3">Колеса</category>
+      <category parentId="2" id="4">Ninja</category>
+      <category parentId="2" id="5">Мешочки</category>
+    </categories>
+    <offers>
+      <offer available="true" id="1">
+        <url>http://unikicks.ru/products/heelys-ninja-7318</url>
+        <price>3500.0</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>4</categoryId>
+        <picture>http://unikicks.ru/%2Fassets%2Fproducts%2F1%2Fproduct%2Fphoca_thumb_l_7318_ninja.jpg</picture>
+        <delivery>true</delivery>
+        <local_delivery_cost>300.0</local_delivery_cost>
+        <name>Heelys Ninja 7318</name>
+        <vendorCode></vendorCode>
+        <description></description>
+        <country_of_origin></country_of_origin>
+        <downloadable>false</downloadable>
+      </offer>
+      <offer available="true" id="4">
+        <url>http://unikicks.ru/products/heelys-trick-7333</url>
+        <price>3500.0</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>4</categoryId>
+        <picture>http://unikicks.ru/%2Fassets%2Fproducts%2F4%2Fproduct%2Fphoca_thumb_l_7333_trick.jpg</picture>
+        <delivery>true</delivery>
+        <local_delivery_cost>300.0</local_delivery_cost>
+        <name>Heelys Trick 7333</name>
+        <vendorCode></vendorCode>
+        <description></description>
+        <country_of_origin></country_of_origin>
+        <downloadable>false</downloadable>
+      </offer>
+    </offers>
+  </shop>
+</yml_catalog>

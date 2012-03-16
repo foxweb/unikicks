@@ -1,0 +1,7 @@
+<% if !current_user || !current_user.user_authentications %>
+  <h2>Войти через социальные сети</h2>
+<% end %>
+<% AuthenticationMethod.where(:environment => ::Rails.env).each do |user| %>
+  <%- img = File.exist?(::Rails.root+"public/images/social/#{user.preferred_provider}_64.png") ? "social/#{user.preferred_provider}_64.png" : "social/spree_64.png" -%>
+  <%= link_to(image_tag(img, :size => "64x64", :alt => "#{user.preferred_provider}"), user_authentication_omniauth_authorize_path(user.preferred_provider.to_sym), :title => "Войти через #{user.preferred_provider}") if user.active %>
+<% end %>

@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <%= render 'shared/head' %>
+</head>
+<%
+   if @body_class.nil?
+     if content_for?(:sidebar)
+       @body_class = 'two-col'
+     else
+       @body_class = 'one-col'
+     end
+   end
+%>
+
+<body class="<%= @body_class %>" id="<%= @body_id %>">
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ru_RU/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="wrapper">
+  <div class="main_top" align="center">
+    <div class="header_panel">
+      <ul>
+        <li style="text-align: center; width: 265px">
+          <div><%= link_to image_tag("logo.png", :alt => "Synergy logo"), root_url %></div></li>
+        <li style="padding-left: 16px; width: 400px"><%= render 'shared/search' %></li>
+        <li>
+          <div><%= link_to_cart %></div>
+        </li>
+        <li>
+          <% if defined?(SpreeCompareProducts) %>
+            <div><%= link_to(t(:product_comparison, :scope => :compare_products) + (@comparable_products.size > 0 ? " (#{@comparable_products.count})" : ""),
+                             compare_products_path, :id => "compare_products") %></div>
+            <div id="tooltip" class="tooltip" style="display: none">
+              <div class="tooltip_top"></div>
+              <div class="tooltip_middle">
+                <div style="font-size: 0px">&nbsp;</div>
+                <div class="tooltip_content" id="tooltip_content"></div>
+                <div style="font-size: 0px">&nbsp;</div>
+              </div>
+              <div class="tooltip_bottom"></div>
+            </div>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div align="center">
+    <div class="fixed_width">
+      <div id="top_panel">
+        <div id="top_login_bar">
+          <%= hook :shared_login_bar %>
+        </div>
+        <div id="header_menu">
+          <ul class="header_menu">
+            <% for page in Page.header_links do %>
+              <li><%= link_to page.title, page.link %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+      <%= render :partial => 'shared/comparable_products' if defined?(SpreeCompareProducts) %>
+      <% if content_for?(:sidebar) %>
+        <div class="sidebar">
+          <%= hook :sidebar do %>
+            <%= yield :sidebar %>
+          <% end %>
+
+          <% if Page.sidebar_links.any? %>
+          <div id="sidebar_menu">
+            <ul class="sidebar_menu">
+              <% for page in Page.sidebar_links do %>
+                <li><%= link_to page.title, page.link %></li>
+              <% end %>
+            </ul>
+          </div>
+          <% end %>
+        </div>
+      <% end %>
+      <div id="content" class="content">
+        <%= flash_messages %>
+        <noscript>
+          <% if flash[:notice] %>
+            <div class="flash notice"><%= flash[:notice] %></div>
+          <% end %>
+          <% if flash[:error] %>
+            <div class="flash errors"><%= flash[:error] %></div>
+          <% end %>
+        </noscript>
+        <%= yield %>
+      </div>
+      <div style="height: 10px;"></div>
+    </div>
+  </div>
+  <div class="footer_fake"></div>
+</div>
+
+<div class="footer" align="center">
+<% cache 'footer_menu' do %>
+  <ul class="footer_menu">
+    <% for page in Page.footer_links do %>
+      <li><%= link_to page.title, page.link %></li>
+    <% end %>
+  </ul>
+<% end %>
+</div>
+<%= hook :footer_right %>
+<% cache 'google_analytics' do %>
+  <%= render 'shared/google_analytics' %>
+<% end %>
+</body>
+</html>

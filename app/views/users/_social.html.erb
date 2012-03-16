@@ -1,0 +1,42 @@
+<% @body_id = 'login' %>
+<div id="existing-customer">
+  <table>
+    <tr>
+      <% if @user.anonymous? %>
+        <%= render :partial => 'shared/social_registrations', :locals => {:user => @user, :omniauth => @omniauth} %>
+      <% else %>
+      <td><%= t("email") %>:</td>
+      <td>
+        <%= @user.email %>
+      </td>
+      <td><p><%= link_to t('edit'), edit_account_path %></p></td>
+      <% end %>
+    </tr>
+  </table>
+
+<% if @user.user_authentications %>
+  <% unless @user.user_authentications.empty? %>
+    <p><strong>Вы вошли через сервисы:</strong></p>
+    <div class="authentications">
+      <% for user_authentication in @user.user_authentications %>
+        <div class="authentication">
+          <%= image_tag File.exist?(::Rails.root+"public/images/social/#{user_authentication.provider}_32.png") ? "social/#{user_authentication.provider}_32.png" : "social/spree_32.png", :size => "32x32" %>
+          <div class="provider"><%= user_authentication.provider %></div>
+          <div class="uid"><%= user_authentication.nickname %></div>
+          <%= link_to( "X", user_authentication, :confirm => 'Уверены, что хотите отвязать этот сервис от вашего аккаунта?', :method => :delete, :class => "remove") %>
+        </div>
+      <% end %>
+      <div class="clear"></div>
+    </div>
+  <% end %>
+</div>
+  <p><strong>Привяжите сервисы к вашему аккаунту:</strong></p>
+<% end %>
+
+<%= hook :login_extras %>
+
+<div class="clear"></div>
+
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'social.css' %>  
+<% end %>

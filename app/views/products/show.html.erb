@@ -1,0 +1,128 @@
+<% content_for :sidebar do %>
+  <%= hook :taxon_sidebar_navigation do %>
+    <%= render :partial => "shared/taxonomies" %>
+  <% end %>
+<% end %>
+<script type="text/javascript">
+  $(function() {
+    <% if defined?(SpreeReviews) %>
+
+    $('#description_add_review_link').click(function() {
+      show_add_review_container();
+      $('#add_review_link').parent('div').slideUp();
+    });
+
+    $('#add_review_link').click(function(e) {
+      show_add_review_container();
+      $(this).parent('div').slideUp();
+      e.preventDefault();
+    });
+    <% end %>
+
+    add_image_handlers();
+  });
+
+  function show_add_review_container() {
+    $('#add_review_container').slideDown();
+  }
+
+</script>
+<% @body_id = 'product-details' %>
+
+<h1><%= @product.name %></h1>
+<div id="product-show">
+  <div id="product-images">
+    <%= hook :product_images do %>
+      <div id="main-image">
+        <%= render 'image' %>
+      </div>
+      <% if @product.images.any? %>
+      <div class="simple_overlay" id="large_image_overlay" style="display: none;">
+        <div class="overlay_container">
+          <div class="large_image" style="width: <%= large_sizes[:width] %>px; height: <%= large_sizes[:height] %>px">
+            <img src="<%= @product.images.first.attachment.url(:large) %>"/>
+          </div>
+          <div class="thumbs_gallery">
+            <ul></ul>
+          </div>
+        </div>
+      </div>
+      <% end %>
+
+    <% end %>
+
+    <div id="product-variants-container">
+    </div>
+  </div>
+
+  <div id="product-description">
+    <%= hook :cart_form do %>
+      <div id="cart-form">
+        <%= render 'cart_form' %>
+      </div>
+    <% end %>
+
+    <div id="product_description_menu">
+      <table cellpadding="0" cellspacing="0" style="width: 300px">
+      </table>
+    </div>
+
+    <%= render :partial => 'shared/like_buttons' %>
+
+  </div>
+</div>
+<div style="clear: left"></div>
+<div id="product_description">
+  <%= hook :product_description do %>
+    <h3><%= t(:description) %>:</h3>
+
+    <div class="description-content">
+      <% if @product.description %>
+        <%= product_description(@product) %>
+      <% else %>
+        <%= t("product_has_no_description") %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<div id="product_parameters">
+  <%= hook :product_properties do %>
+    <%= render 'properties' %>
+  <% end %>
+</div>
+
+<% if defined?(RecentlyViewedConfiguration) && get_recently_viewed_products.count > 1 %>
+  <div id="recently_viewed">
+    <h3><%= t(:recently_viewed_products) %>:</h3>
+
+    <ul class="similar_product_list">
+      <% get_recently_viewed_products.each do |p| %>
+        <% next if p.id == @product.id %>
+        <li>
+          <div class="similar_product_image_container">
+            <%= small_image(p) %>
+          </div>
+          <div>
+            <div><%= link_to p.name, p %></div>
+            <div><%= render 'shared/rating', :product => p if defined?(SpreeReviews) %></div>
+            <div class="similar_product_price"><%= product_price(p) %></div>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<% unless defined?(SpreeEnhancedOptionTypes) %>
+  <%= javascript_include_tag 'product_simple' %>
+<% else %>
+<script type="text/javascript">
+$(function() {
+  variant_changed(default_variant_id);
+});
+</script>
+<% end %>
+
+<%= render 'taxons' %>
+<%= render 'shared/reviews' if defined?(SpreeReviews) %>
