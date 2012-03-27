@@ -67,7 +67,7 @@
       </table>
     </div>
 
-    <%= render :partial => 'shared/like_buttons' %>
+    <%= render 'shared/like_buttons' %>
 
   </div>
 </div>
@@ -125,4 +125,3 @@ $(function() {
 <% end %>
 
 <%= render 'taxons' %>
-<%= render 'shared/reviews' if defined?(SpreeReviews) %>
