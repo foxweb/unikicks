@@ -84,7 +84,11 @@
 */
 
 .pagination {
-	margin:26px auto 0;
+	/*margin:26px auto 0;*/
+	margin:-30px auto 0;
+	left:235px;
+	z-index:1000;
+	position: absolute;
 	width:100px;
 }
 
