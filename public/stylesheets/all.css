@@ -323,6 +323,7 @@ body.two-col #content {
 h1 { font-size: 2.5em; }
 .form-buttons, .clear { clear: both; }
 input.title { width: auto; }
+
 p.follow-all {
   font-size: 1.3em;
   text-align: center;
@@ -704,6 +705,9 @@ ul.thumbnails li.selected { border-color: #999999; }
   display: inline;
   float: left;
   width: 270px;
+}
+#cart-form input.title {
+  display: none;
 }
 #taxon-crumbs {
   display: inline;

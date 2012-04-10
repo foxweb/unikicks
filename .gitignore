@@ -1,5 +1,6 @@
 config/database.yml
 public/pub/*
 public/assets/*
+public/images/*
 tmp/*
 log/*
