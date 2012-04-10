@@ -83,7 +83,7 @@
 	Pagination
 */
 
-.pagination {
+#slides .pagination {
 	/*margin:26px auto 0;*/
 	margin:-30px auto 0;
 	left:235px;
@@ -92,13 +92,13 @@
 	width:100px;
 }
 
-.pagination li {
+#slides .pagination li {
 	float:left;
 	margin:0 1px;
 	list-style:none;
 }
 
-.pagination li a {
+#slides .pagination li a {
 	display:block;
 	width:12px;
 	height:0;
@@ -109,6 +109,6 @@
 	overflow:hidden;
 }
 
-.pagination li.current a {
+#slides .pagination li.current a {
 	background-position:0 -12px;
 }
