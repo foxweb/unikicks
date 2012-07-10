@@ -1,0 +1,13 @@
+<p>
+  <%="#{address.firstname} #{address.lastname} (#{address.phone}" %><%= address.alternative_phone unless address.alternative_phone.blank? %>)<br />
+  <% if defined?(pickpoint_address) && pickpoint_address %>
+    <dl>
+      <dt>Название пункта PickPoint:</dt><dd><%= h pickpoint_address.name %></dd>
+      <dt>Адрес пункта PickPoint:</dt><dd><%= h pickpoint_address.address %></dd>
+      <dt>Id пункта PickPoint</dt><dd><%= h pickpoint_address.pickpoint_id %></dd>
+    </dl>
+  <% else %>
+    <%= address.address1 %> <%= ", #{address.address2}" unless address.address2.blank? %>
+    <%= ", #{address.city}, #{address.state_text}, #{address.zipcode}, #{address.country.name}" %>
+  <% end %>
+</p>

@@ -1,0 +1,77 @@
+<script type="text/javascript" src="http://pickpoint.ru/select/postamat.js" /></script>
+<script type="text/javascript" src="/javascripts/jquery.cookie.js" /></script>
+<script type="text/javascript">
+// implement JSON.stringify serialization
+JSON.stringify = JSON.stringify || function (obj) {
+	var t = typeof (obj);
+	if (t != "object" || obj === null) {
+		// simple data type
+		if (t == "string") obj = '"'+obj+'"';
+		return String(obj);
+	}
+	else {
+		// recurse array or object
+		var n, v, json = [], arr = (obj && obj.constructor == Array);
+		for (n in obj) {
+			v = obj[n]; t = typeof(v);
+			if (t == "string") v = '"'+v+'"';
+			else if (t == "object" && v !== null) v = JSON.stringify(v);
+			json.push((arr ? "" : '"' + n + '":') + String(v));
+		}
+		return (arr ? "[" : "{") + String(json) + (arr ? "]" : "}");
+	}
+};
+
+</script>
+<script type="text/javascript">
+  function pickPointCallback(data){
+    $('#pickpoint-address').html(
+        data.name + "<br/>" + data.address
+    );
+    $('#pickpoint-data-id').val(data.id);
+    $('#pickpoint-data-name').val(data.name);
+    $('#pickpoint-data-address').val(data.address);
+
+    $.cookie('pickpoint', JSON.stringify({address: data.address, id: data.id, name: data.name}));
+  }
+
+  $(function(){
+    if($.cookie('pickpoint')){
+      pickPointCallback($.parseJSON($.cookie('pickpoint')));
+    }
+  });
+</script>
+
+<fieldset id='shipping_method'>
+  <legend><%= t("shipping_method") %></legend>
+  <div class="inner">
+    <div id="methods">
+      <p class="field radios">
+        <% @order.rate_hash.each do |shipping_method| %>
+          <label>
+            <%= radio_button(:order, :shipping_method_id, shipping_method[:id]) %>
+            <%= shipping_method[:name] %> <%= number_to_currency shipping_method[:cost] %>
+            <div style="margin-left:30px">
+            <div id="pickpoint-address">
+            </div>
+            <input type="hidden" name="order[pickpoint_data][pickpoint_id]" id="pickpoint-data-id"/>
+            <input type="hidden" name="order[pickpoint_data][name]" id="pickpoint-data-name"/>
+            <input type="hidden" name="order[pickpoint_data][address]" id="pickpoint-data-address"/>
+            <%= link_to_function "выбрать адрес", "PickPoint.open(pickPointCallback);" %>
+          </div>
+          </label><br />
+        <% end %>
+      </p>
+    </div>
+    <% if Spree::Config[:shipping_instructions] && @order.rate_hash.present? %>
+      <p id="minstrs">
+        <%= form.label :special_instructions, t("shipping_instructions") %><br />
+        <%= form.text_area :special_instructions, :cols => 40, :rows => 7 %>
+      </p>
+    <% end %>
+  </div>
+</fieldset>
+
+<div class="form-buttons">
+  <input type="submit" class="continue button primary" value="<%=t("save_and_continue") %>"/>
+</div>
