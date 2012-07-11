@@ -9,16 +9,17 @@
 <% @taxons.each do |taxon| %>
   <div class="taxon">
     <h2><%= taxon.name %></h2>
-
     <%= render :partial => "shared/products", :locals => {:products => taxon_preview(taxon, 6), :taxon => taxon} %>
   </div>
 <% end %>
 
 <h1>Добро пожаловать в интернет-магазин Юникикс!</h1>
 <div>
-    <a href="http://unikicks.ru/"><img src="/images/homepics/sorry.png" alt="Извините, мы переезжаем!" /></a></div>
+  <a href="/t/brands/vibram-fivefingers"><img src="/images/homepics/vibramfivefingers-new.jpg" alt="Новое поступление Vibram FiveFingers! Юникикс на м. Маяковская! У нас можно померить перед покупкой. Быстрая доставка по Москве и РФ." /></a>
+</div>
 <div>
-<a href="/predzakaz"> <img src="/images/homepics/predzakaz.png" alt="Предзаказ" ></a> <a href="/map"><img src="/images/homepics/map.png" alt="Схема проезда" >
+  <a href="/t/categories/rolikovye-konki"><img src="/images/homepics/skorpion-quadline.png" alt="Удобные роликовые коньки(квады) — Skorpion Quadline" ></a>
+  <a href="/map"><img src="/images/homepics/map.png" alt="Схема проезда в магазин Unikicks на Маяковской" >
 </div>
 <script type="text/javascript" src="http://userapi.com/js/api/openapi.js?48"></script>
 
