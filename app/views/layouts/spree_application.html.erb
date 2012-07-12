@@ -30,8 +30,16 @@
     <div class="header_panel">
       <ul>
         <li style="text-align: center; width: 265px">
-          <div><%= link_to image_tag("logo.png", :alt => "Unikicks logo"), root_url %></div></li>
-        <li style="padding-left: 16px; width: 400px"><h4><img src="http://unikicks.ru/ico/telephone-logo-16x16.png" style="padding-top: 10px;"> <b>8 (499) 922-06-70</b></h4></li>
+          <div><%= link_to image_tag("logo.png",
+          :alt => "Unikicks — интернет-магазин спортивной обуви и аксессуаров",
+          :title => "Unikicks"), root_url %></div></li>
+        <li style="padding-left: 16px; width: 400px">
+            <%= image_tag "ico/telephone-logo-16x16.png",
+            :alt => 'Телефон',
+            :title => 'Телефон',
+            :style => 'padding-top: 10px;' %>
+            <strong>8 (499) 922-06-70</strong>
+        </li>
         <li>
           <div><%= link_to_cart %></div>
         </li>
@@ -129,7 +137,7 @@
                     trackLinks:true, webvisor:true});
         } catch(e) {}
     });
-    
+
     var n = d.getElementsByTagName("script")[0],
         s = d.createElement("script"),
         f = function () { n.parentNode.insertBefore(s, n); };
