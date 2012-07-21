@@ -1,3 +1,13 @@
+<fieldset id='shipping_method'>
+  <legend><%= t("shipping_method") %></legend>
+  <div class="inner">
+    <div id="methods">
+      <p class="field radios">
+        <% @order.rate_hash.each do |shipping_method| %>
+          <label>
+            <%= radio_button(:order, :shipping_method_id, shipping_method[:id]) %>
+            <%= shipping_method[:name] %> <%= number_to_currency shipping_method[:cost] %>
+            <% if is_pickpoint(shipping_method[:name]) %>
 <script type="text/javascript" src="http://pickpoint.ru/select/postamat.js" /></script>
 <script type="text/javascript" src="/javascripts/jquery.cookie.js" /></script>
 <script type="text/javascript">
@@ -39,18 +49,20 @@ JSON.stringify = JSON.stringify || function (obj) {
     if($.cookie('pickpoint')){
       pickPointCallback($.parseJSON($.cookie('pickpoint')));
     }
+
+    $('form.edit_order').submit(function(){
+      if($('#order_shipping_method_id_<%= shipping_method[:id] %>').is(':checked') && !$.cookie('pickpoint')){
+        alert('Пожалуйста выберите постамат Pickpoint');
+        return false;
+      }
+
+      return true;
+    });
   });
 </script>
 
-<fieldset id='shipping_method'>
-  <legend><%= t("shipping_method") %></legend>
-  <div class="inner">
-    <div id="methods">
-      <p class="field radios">
-        <% @order.rate_hash.each do |shipping_method| %>
-          <label>
-            <%= radio_button(:order, :shipping_method_id, shipping_method[:id]) %>
-            <%= shipping_method[:name] %> <%= number_to_currency shipping_method[:cost] %>
+
+
             <div style="margin-left:30px">
             <div id="pickpoint-address">
             </div>
@@ -59,6 +71,7 @@ JSON.stringify = JSON.stringify || function (obj) {
             <input type="hidden" name="order[pickpoint_data][address]" id="pickpoint-data-address"/>
             <%= link_to_function "выбрать адрес", "PickPoint.open(pickPointCallback);" %>
           </div>
+        <% end %>
           </label><br />
         <% end %>
       </p>

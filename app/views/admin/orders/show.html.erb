@@ -17,7 +17,7 @@
   <% if @order.ship_address %>
     <div class='adr'>
       <h4><%= t("ship_address") %></h4>
-      <% @pickpoint_address = PickpointAddress.find_by_order_id(@order.id) %>
+      <% @pickpoint_address = is_pickpoint(@order.shipping_method.name) ? PickpointAddress.find_by_order_id(@order.id) : nil %>
       <%= render :partial => 'admin/shared/address', :locals => {:address => @order.ship_address, :pickpoint_address => @pickpoint_address} %>
     </div>
     <% end %>
