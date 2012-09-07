@@ -19,6 +19,10 @@
           <div class="product-image-wrapper">
               <%= link_to small_image(product), product %>
           </div>
+          <div>
+          <%= link_to "Подробнее", product, :class => "button list-button", :style => "width:65px;float:left;margin-left:18px;" %>
+          <%= link_to_function "Купить", "addToCart(this, \"#{product.has_variants? ? :quantity : "variants[#{product.master.id}]"}\")", :class => "button list-button", :style => "width:65px;float:right;margin-right:18px;" %>
+        </div>
           <% end %>
           <%= link_to raw("<span class='price selling'>#{product_price(product)}</span>"), product, :class => 'info' %>
         <% end %>
@@ -37,3 +41,12 @@
                     :next_label => "#{t('next')} &#187;") %>
 <% end %>
  
+<%= form_for :order, :url => populate_orders_url, :html => { :id => "cart_form" } do |f| %>
+<% end %>
+<script type="text/javascript">
+  function addToCart(th, name){
+    $('#cart_form input').remove();
+    $('#cart_form').append('<input type="hidden" name="' + name + '" value="1"/>');
+    $('#cart_form').submit();
+  }
+</script>

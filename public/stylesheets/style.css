@@ -1046,3 +1046,16 @@ div#jGrowl div.jGrowl-notification.error {
 .pika-textnav {
   display: none;
 }
+
+a.list-button {
+  background:#663366 !important;
+  color:white !important;
+}
+
+.product-listing .list-button {
+  display: none;
+}
+
+.product-listing li:hover .list-button {
+  display: block;
+}
