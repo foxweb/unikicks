@@ -1,4 +1,8 @@
 <h1><%= accurate_title %></h1>
+<% if @taxon.text %>
+  <%= raw @taxon.text %>
+<% end %>
+
 
 <% content_for :sidebar do %>
   <%= hook :taxon_sidebar_navigation do %>
