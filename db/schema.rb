@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111206144304) do
+ActiveRecord::Schema.define(:version => 20120907055859) do
 
   create_table "addresses", :force => true do |t|
     t.string   "firstname"
@@ -76,7 +76,6 @@ ActiveRecord::Schema.define(:version => 20111206144304) do
 
   create_table "calculators", :force => true do |t|
     t.string   "type"
-    t.string   "description"
     t.integer  "calculable_id",   :null => false
     t.string   "calculable_type", :null => false
     t.datetime "created_at"
@@ -280,6 +279,15 @@ ActiveRecord::Schema.define(:version => 20111206144304) do
     t.string   "avs_response"
   end
 
+  create_table "pickpoint_addresses", :force => true do |t|
+    t.string   "name"
+    t.string   "address"
+    t.string   "pickpoint_id"
+    t.integer  "order_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "preferences", :force => true do |t|
     t.string   "name",       :limit => 100, :null => false
     t.integer  "owner_id",                  :null => false
@@ -439,7 +447,7 @@ ActiveRecord::Schema.define(:version => 20111206144304) do
     t.string   "name"
     t.string   "location"
     t.integer  "rating"
-    t.text     "title"
+    t.string   "title"
     t.text     "review"
     t.boolean  "approved",   :default => false
     t.datetime "created_at"
@@ -545,6 +553,7 @@ ActiveRecord::Schema.define(:version => 20111206144304) do
     t.string   "seotitle"
     t.string   "seodesc"
     t.text     "seobody"
+    t.text     "text"
   end
 
   add_index "taxons", ["parent_id"], :name => "index_taxons_on_parent_id"
