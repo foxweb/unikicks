@@ -20,8 +20,9 @@
               <%= link_to small_image(product), product %>
           </div>
           <div>
-          <%= link_to "Подробнее", product, :class => "button list-button", :style => "width:65px;float:left;margin-left:18px;" %>
-          <%= link_to_function "Купить", "addToCart(this, \"#{product.has_variants? ? :quantity : "variants[#{product.master.id}]"}\")", :class => "button list-button", :style => "width:65px;float:right;margin-right:18px;" %>
+          <%= link_to "Подробнее", product, :class => "button list-button", :style => "width:70px;float:left;margin-left:20px;" %>
+          <%= link_to_function "Купить", "addToCart(this, \"#{product.has_variants? ? :quantity : "variants[#{product.master.id}]"}\")",
+            :class => "button list-button", :style => "width:70px;float:right;margin-right:20px;" %>
         </div>
           <% end %>
           <%= link_to raw("<span class='price selling'>#{product_price(product)}</span>"), product, :class => 'info' %>

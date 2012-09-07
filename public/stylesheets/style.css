@@ -502,9 +502,9 @@ body.two-col #content {
   background: none;
   border: 1px solid white;
   margin: 0 0 15px 0;
-  padding: 2em 0 0 0;
-  width: 248px;
-  height: 230px;
+  padding: 1em 0 0 0;
+  width: 264px;
+  height: 210px;
 }
 
 .product-listing li:hover {
@@ -519,7 +519,7 @@ body.two-col #content {
   text-align: center;
   vertical-align: middle;
   height: 130px;
-  width: 248px;
+  width: 264px;
 }
 
 .product-listing li a.info {
