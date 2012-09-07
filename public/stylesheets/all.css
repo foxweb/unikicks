@@ -302,7 +302,7 @@ body.one-col #content {
 body.two-col #content {
   display: inline;
   float: left;
-  width: 750px;
+  width: 800px;
 }
 #header {
   position: relative;
@@ -428,6 +428,7 @@ ul#nav-bar li.cart-indicator a {
 }
 ul#nav-bar li.cart-indicator a.full { background-image: url(../images/cart-full_x32.png); }
 .pagination {
+  font-size: 25px;
   padding-top: 10px;
   text-align: right;
 }
@@ -927,4 +928,14 @@ div#content div#taxon_body {
   clear: both;
   margin-top: 20px;
   font-size: 80%;
+}
+
+button.super-large {
+  font-size: 2.6em !important;
+  width: 100%;
+}
+
+button.super-large-with-small-font {
+  font-size: 1.8em !important;
+  width: 100%;
 }

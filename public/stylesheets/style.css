@@ -158,7 +158,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .sidebar {
   float: left;
-  width: 250px;
+  width: 200px;
   text-align: left;
 }
 
@@ -354,7 +354,7 @@ h2 a:hover {
 #product-images {
   display: block;
   margin-right: 0;
-  width: 210px;
+  width: 600px;
 }
 
 #product-images h2 {
@@ -369,7 +369,7 @@ h2 a:hover {
   display: block;
   width: auto;
   float: none;
-  margin-left: 430px;
+  margin-left: 600px;
   border-right: none;
   margin-right: 0;
   padding-right: 0;
@@ -377,7 +377,7 @@ h2 a:hover {
 
 #thumbnails {
   margin-top: 1em;
-  width: 360px;
+  width: 600px;
 }
 
 #variant-thumbnails li, #product-thumbnails li {
@@ -544,11 +544,11 @@ body.two-col #content {
 }
 
 ul.thumbnails li {
-  width: 42px;
-  height: 42px;
+  width: 70px;
+  height: 70px;
   margin-right: 4px;
   margin-bottom: 4px;
-  min-height: 42px;
+  min-height: 70px;
   padding: 0;
   float: none;
   display: inline-block;
@@ -1036,4 +1036,13 @@ div#jGrowl div.jGrowl-notification, div#jGrowl div.jGrowl-closer {
 
 div#jGrowl div.jGrowl-notification.error {
   background: #a50000;
+}
+
+.pika-stage {
+  width: 570px;
+  padding: 10px 10px 0 10px;
+  margin-bottom: 10px;
+}
+.pika-textnav {
+  display: none;
 }
