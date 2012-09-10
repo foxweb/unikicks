@@ -1,5 +1,5 @@
 <!-- no need for thumnails unless there is more then one image -->
-<% if product.images.size > 1 %>
+<% if product.images.size > 0 %>
   <ul id="product-thumbnails" class="thumbnails">
     <% product.images[0..-1].each do |i| %>  
       <li><img src="<%= i.attachment.url(:show)%>" alt="" ref="<%= i.attachment.url(:large) %>"/><span><%= h i.alt %></span></li>
