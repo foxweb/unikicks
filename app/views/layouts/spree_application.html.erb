@@ -50,8 +50,6 @@
 </li>
         <li>
           <div><%= link_to_cart %></div></div>
-        </li>
-        <li>
           <% if defined?(SpreeCompareProducts) %>
             <div><%= link_to(t(:product_comparison, :scope => :compare_products) + (@comparable_products.size > 0 ? " (#{@comparable_products.count})" : ""),
                              compare_products_path, :id => "compare_products") %></div>
