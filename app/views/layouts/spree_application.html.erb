@@ -31,21 +31,25 @@
       <ul>
         <li style="text-align: center; width: 265px">
           <div><%= link_to image_tag("logo.png",
-          :alt => "Unikicks — интернет-магазин спортивной обуви и аксессуаров",
+          :alt => "Unikicks — магазин Vibram FiveFingers, сандалии, обувь с пальцами, треккинг, фитнес, йога.",
           :title => "Unikicks"), root_url %></div></li>
-        <li style="padding-left: 16px; width: 400px">
-            <%= image_tag "ico/telephone-logo-16x16.png",
-            :alt => 'Телефон',
-            :title => 'Телефон',
-            :style => 'padding-top: 10px;' %>
-            <strong>8 (499) 922-06-70</strong>
-            <br />
-            
-            <a style='text-decoration:underline;cursor:pointer;' alt='Бесплатный вызов' onclick='window.open("http://unikicks.s6.octoline.ru/widgets/callme_new.php?service_instance_id=2875", "CallMe", "width=320, height=350, resizable=no, toolbar=0, status=0, location=0, directories=0, menubar=0, scrollbars=0");' >Позвоните мне! </a>
-            
-        </li>
+        <li style="padding-left: 16px; width: 265px; font-size:150%;"> <img src="http://unikicks.ru/images/ico/telephone-logo-16x16.png" style="padding-top: 10px;"> <font size="4"><b>8 (499) 922-06-70</b></font>
+
+<br />
+<a style='text-decoration:underline;cursor:pointer;' alt='Бесплатный вызов' onclick='window.open("http://unikicks.s6.octoline.ru/widgets/callme_new.php?service_instance_id=2875", "CallMe", "width=320, height=350, resizable=no, toolbar=0, status=0, location=0, directories=0, menubar=0, scrollbars=0");' >Заказать звонок</a>
+</li>
         <li>
-          <div><%= link_to_cart %></div>
+
+  <li style="padding-left: 16px; width: 350px; font-size:100%;"> &nbsp<b>м. Маяковская, ул. Фадеева, 2</b></font>
+
+<br />
+ежедневно с 12-00 до 20-00
+<br />
+
+<a href="/map" style='text-decoration:underline;cursor:pointer;' alt='Открыть схему проезда'>Схема проезда</a>
+</li>
+        <li>
+          <div><%= link_to_cart %></div></div>
         </li>
         <li>
           <% if defined?(SpreeCompareProducts) %>
