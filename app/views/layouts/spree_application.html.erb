@@ -31,7 +31,7 @@
       <ul>
         <li style="text-align: center; width: 265px">
           <div><%= link_to image_tag("logo.png",
-          :alt => "Unikicks — магазин Vibram FiveFingers, сандалии, обувь с пальцами, треккинг, фитнес, йога.",
+          :alt => "Unikicks — магазин Vibram FiveFingers, сандалии, обувь с пальцами, треккинг, обувь для фитнеса, лёгкая обувь, летняя обувь.",
           :title => "Unikicks"), root_url %></div></li>
         <li style="padding-left: 16px; width: 265px; font-size:150%;"> <img src="http://unikicks.ru/images/ico/telephone-logo-16x16.png" style="padding-top: 10px;"> <font size="4"><b>8 (499) 922-06-70</b></font>
 
@@ -123,6 +123,7 @@
 <% cache 'footer_menu' do %>
   <ul class="footer_menu">
       <li style="margin-right:50px;color:#ffffff;">&copy; 2012 Unikicks (Юникикс) &mdash; уникальная обувь.</li>
+      <li style="margin-right:50px;color:#ffffff;">Официальный дилер Vibram FiveFingers в России</li>
     <% for page in Page.footer_links do %>
       <li><%= link_to page.title, page.link %></li>
     <% end %>
