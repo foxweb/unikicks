@@ -49,7 +49,7 @@
 <a href="/map" style='text-decoration:underline;cursor:pointer;' alt='Открыть схему проезда'>Схема проезда</a>
 </li>
         <li>
-          <div><%= link_to_cart %></div></div>
+          <div><%= link_to_cart %></div>
           <% if defined?(SpreeCompareProducts) %>
             <div><%= link_to(t(:product_comparison, :scope => :compare_products) + (@comparable_products.size > 0 ? " (#{@comparable_products.count})" : ""),
                              compare_products_path, :id => "compare_products") %></div>
