@@ -1059,3 +1059,7 @@ a.list-button {
 .product-listing li:hover .list-button {
   display: block;
 }
+
+.product-name {
+  height: 18px;
+}
