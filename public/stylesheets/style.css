@@ -1063,3 +1063,10 @@ a.list-button {
 .product-name {
   height: 18px;
 }
+
+.product-buttons {
+  position: absolute;
+  left:0;
+  right:0;
+  top: 160px;
+}
