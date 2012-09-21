@@ -1,3 +1,4 @@
+<%= javascript_include_tag 'jquery.leanModal.min' %>
 <%
   paginated_products = @searcher.products if params.key?(:keywords)
   paginated_products ||= products
@@ -21,7 +22,16 @@
           </div>
           <div class="product-buttons">
           <%= link_to "Подробнее", product, :class => "button list-button", :style => "width:70px;float:left;margin-left:20px;" %>
-          <%= link_to_function "Купить", "addToCart(this, \"#{product.has_variants? ? 'order[quantity]' : "variants[#{product.master.id}]"}\")",
+          <% 
+            variants = false
+
+            if product.has_variants?
+              variants = self.render_to_string(:partial => '/products/variants', :locals => { :product => product})
+            end
+
+            variants = variants.to_json
+          %>
+          <%= link_to_function "Купить", "addToCart(this, \"#{!product.has_variants? && false ? 'order[quantity]' : "variants[#{product.master.id}]"}\", #{variants})",
             :class => "button list-button", :style => "width:70px;float:right;margin-right:20px;" %>
           <%= link_to raw("<span class='price selling'>#{product_price(product)}</span>"), product, :class => 'info' %>
         </div>
@@ -42,12 +52,34 @@
                     :next_label => "#{t('next')} &#187;") %>
 <% end %>
  
-<%= form_for :order, :url => populate_orders_url, :html => { :id => "cart_form" } do |f| %>
-<% end %>
 <script type="text/javascript">
-  function addToCart(th, name){
-    $('#cart_form input.generated').remove();
+  var showBox = false;
+
+  function addToCart(th, name, variantsToChoose){
+    $('#cart_form .generated').remove();
     $('#cart_form').append('<input class="generated" type="hidden" name="' + name + '" value="1"/>');
+
+    if(variantsToChoose){
+      $(th).attr('href', '#test').leanModal({top: 200});
+      $('#cart_form').prepend('<div class="generated">' + variantsToChoose + '</div>');
+
+      showBox = true;
+      setTimeout(function(){
+          if(showBox){
+            $(th).click();
+            showBox = false;
+          }
+      }, 100);
+      return false;
+    }
+
     $('#cart_form').submit();
   }
 </script>
+<div id="test" style="display: none; ">
+<%= form_for :order, :url => populate_orders_url, :html => { :id => "cart_form" } do |f| %>
+    <button type='submit' class='super-large large primary'>
+      <%= image_tag('/images/add-to-cart.png', :style => "padding-right:2px") + t('add_to_cart') %>
+    </button>
+<% end %>
+		</div>
