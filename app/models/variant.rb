@@ -75,7 +75,7 @@ class Variant < ActiveRecord::Base
 
   def options_text
     self.option_values.sort{|ov1, ov2| ov1.option_type.position <=> ov2.option_type.position}.map { |ov| 
-      if ov.option_type.presentation == 'Размер'
+      if ov.option_type.presentation.match(/Размер/)
         "#{ov.presentation}" 
       else 
         "#{ov.option_type.presentation}: #{ov.presentation}" 
