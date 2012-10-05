@@ -124,4 +124,24 @@ $(function() {
 </script>
 <% end %>
 
+<%= javascript_include_tag 'jquery.leanModal.min' %>
 <%= render 'taxons' %>
+
+<div id="product-show-modal">
+  <a class="close-button" href="javascript:;" style="position:absolute;right:20px;top:20px;z-index:1000"></a>
+
+<% # Copied from app/views/products/_thumbnails.html.erb %>
+<% product = @product %>
+<% if product.images.size > 0 %>
+  <ul id="product-thumbnails-big" class="thumbnails">
+    <% product.images[0..-1].each do |i| %>  
+      <li><img src="<%= i.attachment.url(:show)%>" alt="" ref="<%= i.attachment.url(:large) %>"/>
+      <span><%= h i.alt %></span></li>
+    <% end %>
+  </ul>
+<% end %>
+<div style="text-align:center;clear:both;">
+  <a href="javascript:;" onclick="$('#product-show-modal .close-button').click();">Закрыть окно</a>
+</div>
+</div>
+

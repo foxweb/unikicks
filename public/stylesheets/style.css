@@ -1100,3 +1100,47 @@ a.list-button {
   width: 32px;
   float:right;
 }
+
+#product-show-modal {
+  left: 10%;
+  right: 10%;
+  top: 15%;
+  bottom: 15%;
+  padding: 30px;
+  display: none;
+  background: #FFF;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  box-shadow: 0px 0px 4px rgba(0,0,0,0.7);
+  -webkit-box-shadow: 0 0 4px rgba(0,0,0,0.7);
+  -moz-box-shadow: 0 0px 4px rgba(0,0,0,0.7);
+}
+
+#product-show-modal .pika-stage {
+  width: auto;
+}
+
+#product-show-modal .pika-stage .caption {
+  display: none !important;
+  right: 0;
+  padding:0;
+}
+
+#product-show-modal .pika-stage .pika-loader {
+  display: none;
+}
+
+#product-show-modal .pika-stage {
+  height: auto;
+  position:absolute;
+  left:30px;
+  right:30px;
+  top:30px;
+  bottom: 105px;
+}
+
+#product-thumbnails-big {
+  position: absolute; 
+  bottom:30px;
+}

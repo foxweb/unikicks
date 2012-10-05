@@ -42,7 +42,24 @@
   <script type="text/javascript" charset="utf-8">
 
 	$(document).ready(function(){
-      $('#product-thumbnails').PikaChoose({autoPlay: false});
+      $('a.zoom-image').leanModal({top: 50, closeButton: '.close-button'});
+      $('#product-thumbnails').PikaChoose({autoPlay: false,
+        bindsFinished: function(){
+          $('a.zoom-image').leanModal({top: 50, closeButton: '.close-button'});
+
+          $('#product-thumbnails-big').PikaChoose({autoPlay: false, transition: [0] });
+          $('#product-thumbnails img').bind('click.pikachoose', function(evt){
+            var step = $('#product-thumbnails img').index($('#product-thumbnails').data('pikachoose').active);
+            setTimeout(function(){
+              $('a.zoom-image').leanModal({top: 50, closeButton: '.close-button'});
+              $('#product-thumbnails-big').css({display: 'block', visibility: 'hidden'});
+              $('#product-thumbnails-big img:nth(' + step + ')').click();
+              $('#product-thumbnails-big').css({visibility: 'visible'});
+              $('.pika-loader').css('display', 'none');
+            }, 1000);
+          });
+        }
+      });
 	});
   </script>
 
