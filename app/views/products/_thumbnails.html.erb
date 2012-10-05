@@ -4,7 +4,7 @@
     <% product.images[0..-1].each do |i| %>  
       <li><img src="<%= i.attachment.url(:show)%>" alt="" ref="<%= i.attachment.url(:large) %>"/>
       <span>
-      <div style="position:absolute;top:60px;right:280px;margin-right:-100px;width:200px;text-align:center;">
+      <div style="position:absolute;bottom:-40px;right:280px;margin-right:-100px;width:200px;text-align:center;">
       
       <a class="zoom-image" href="#product-show-modal" style="font-size:16px;background-image:url(/images/zoom-icon.png);padding-left:18px;background-repeat: no-repeat;line-height:16px;">Увеличить изображение</a></div>
       <%= h i.alt %></span></li>
