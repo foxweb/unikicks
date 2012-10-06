@@ -42,9 +42,20 @@
   <script type="text/javascript" charset="utf-8">
 
 	$(document).ready(function(){
+    var makeNavShowAlways = function(pikachoose){
+      pikachoose.wrap.unbind('mouseenter.pikachoose').unbind('mouseleave.pikachoose');
+
+      if($('#product-thumbnails li').length > 1){
+        pikachoose.imgNav.stop(true,true).fadeTo('slow', 1.0);
+      }else{
+        pikachoose.imgNav.stop(true,true).fadeTo('slow', 0.0);
+      }
+    };
+
     $('a.zoom-image').leanModal({top: 50, closeButton: '.close-button'});
     $('#product-thumbnails').PikaChoose({autoPlay: false,
-      bindsFinished: function(){
+      bindsFinished: function(pikachoose){
+        makeNavShowAlways(pikachoose);
 
         $('#product-show .pika-stage').append('<div style="position:absolute;bottom:10px;right:280px;margin-right:-100px;width:200px;text-align:center;"><a class="zoom-image" href="#product-show-modal" style="font-size:16px;background-image:url(/images/zoom-icon.png);padding-left:18px;background-repeat: no-repeat;line-height:16px;">Увеличить изображение</a></div>');
         $('a.zoom-image').leanModal({top: 50, closeButton: '.close-button'});
@@ -59,7 +70,7 @@
             lastStep = step;
         });
 
-        $('#product-thumbnails-big').PikaChoose({autoPlay: false, transition: [0] });
+        $('#product-thumbnails-big').PikaChoose({autoPlay: false, transition: [0], bindsFinished: makeNavShowAlways });
       }
     });
 	});
