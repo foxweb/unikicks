@@ -42,24 +42,26 @@
   <script type="text/javascript" charset="utf-8">
 
 	$(document).ready(function(){
-      $('a.zoom-image').leanModal({top: 50, closeButton: '.close-button'});
-      $('#product-thumbnails').PikaChoose({autoPlay: false,
-        bindsFinished: function(){
-          $('a.zoom-image').leanModal({top: 50, closeButton: '.close-button'});
+    $('a.zoom-image').leanModal({top: 50, closeButton: '.close-button'});
+    $('#product-thumbnails').PikaChoose({autoPlay: false,
+      bindsFinished: function(){
 
-          $('#product-thumbnails-big').PikaChoose({autoPlay: false, transition: [0] });
-          $('#product-thumbnails img').bind('click.pikachoose', function(evt){
+        $('#product-show .pika-stage').append('<div style="position:absolute;bottom:10px;right:280px;margin-right:-100px;width:200px;text-align:center;"><a class="zoom-image" href="#product-show-modal" style="font-size:16px;background-image:url(/images/zoom-icon.png);padding-left:18px;background-repeat: no-repeat;line-height:16px;">Увеличить изображение</a></div>');
+        $('a.zoom-image').leanModal({top: 50, closeButton: '.close-button'});
+        var lastStep = 0;
+        $('a.zoom-image').click(function(){
             var step = $('#product-thumbnails img').index($('#product-thumbnails').data('pikachoose').active);
-            setTimeout(function(){
-              $('a.zoom-image').leanModal({top: 50, closeButton: '.close-button'});
-              $('#product-thumbnails-big').css({display: 'block', visibility: 'hidden'});
+            if(step != lastStep){
               $('#product-thumbnails-big img:nth(' + step + ')').click();
-              $('#product-thumbnails-big').css({visibility: 'visible'});
               $('.pika-loader').css('display', 'none');
-            }, 1000);
-          });
-        }
-      });
+            }
+
+            lastStep = step;
+        });
+
+        $('#product-thumbnails-big').PikaChoose({autoPlay: false, transition: [0] });
+      }
+    });
 	});
   </script>
 
