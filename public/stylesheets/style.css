@@ -821,7 +821,6 @@ div.star-rating-hover a {
 }
 
 #top_panel {
-  height: 4em;
   padding-top: 1em;
 }
 
@@ -1148,7 +1147,8 @@ a.list-button {
 .top-menu {
   float:left;
   margin: 0;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
+  height: 120px;
 }
 
 .top-menu li {
