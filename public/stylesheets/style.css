@@ -1144,3 +1144,30 @@ a.list-button {
   position: absolute; 
   bottom:30px;
 }
+
+.top-menu {
+  float:left;
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+.top-menu li {
+  float:left;
+  list-style-type: none;
+  border: 1px solid transparent;
+  margin-left: 1px;
+}
+
+.top-menu li:hover, .top-menu li.active {
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+}
+
+.top-menu li:hover img, .top-menu li.active img {
+  opacity: 1;
+}
+
+.top-menu img {
+  opacity: 0.6;
+}
+

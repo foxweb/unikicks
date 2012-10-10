@@ -81,6 +81,24 @@
           </ul>
         </div>
       </div>
+      <div>
+        <ul class="top-menu">
+          <% uri = "/t/categories/obuv-s-paltsami" %>
+          <li<% if request.request_uri.index(uri) %> class="active"<% end %>><a href="/t/categories/obuv-s-paltsami"><img src="/images/top-menu-images/fivefingers.png"/></a></li>
+          <% uri = "/t/categories/noski-s-paltsami" %>
+          <li<% if request.request_uri.index(uri) %> class="active"<% end %>><a href="/t/categories/noski-s-paltsami"><img src="/images/top-menu-images/noski-s-palcami.png"/></a></li>
+          <% uri = "/t/categories/rolikovye-konki" %>
+          <li<% if request.request_uri.index(uri) %> class="active"<% end %>><a href="/t/categories/rolikovye-konki"><img src="/images/top-menu-images/rolikovie-konki.png"/></a></li>
+          <% uri = "/t/categories/sandalii" %>
+          <li<% if request.request_uri.index(uri) %> class="active"<% end %>><a href="/t/categories/sandalii"><img src="/images/top-menu-images/sandalii-vibram.png"/></a></li>
+          <% uri = "/t/categories/osenne-zimnyaya-obuv" %>
+          <li<% if request.request_uri.index(uri) %> class="active"<% end %>><a href="/t/categories/osenne-zimnyaya-obuv"><img src="/images/top-menu-images/trekkingovaya-obuv.png"/></a></li>
+          <% uri = "/t/categories/zhvachka-dlya-ruk" %>
+          <li<% if request.request_uri.index(uri) %> class="active"<% end %>><a href="/t/categories/zhvachka-dlya-ruk"><img src="/images/top-menu-images/zhvachka-dlya-ruk.png"/></a></li>
+          <% uri = "/t/categories/jolly-jumper" %>
+          <li<% if request.request_uri.index(uri) %> class="active"<% end %>><a href="/t/categories/jolly-jumper"><img src="/images/top-menu-images/jolly-jumper.png"/></a></li>
+        </ul>
+      </div>
       <%= render :partial => 'shared/comparable_products' if defined?(SpreeCompareProducts) %>
       <% if content_for?(:sidebar) %>
         <div class="sidebar">
